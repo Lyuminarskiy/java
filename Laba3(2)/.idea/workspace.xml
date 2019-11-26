@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="946fdcf3-c9a0-4f56-8f3f-1ba7e2f404df" name="Default Changelist" comment="" />
+    <list default="true" id="946fdcf3-c9a0-4f56-8f3f-1ba7e2f404df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laba3(2)/META-INF/Laba3(2).kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laba3(2)/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laba3(2)/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laba3(2)/lib/Task3_3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laba3(2)/lib/Task3_3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/russia_population.csv" beforeDir="false" afterPath="$PROJECT_DIR$/russia_population.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/Task3_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/Task3_3.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +24,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1U6u51J77gva9g13B4YuqHTjCIq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="lib" />
@@ -66,5 +83,18 @@
       <updated>1574689179107</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
