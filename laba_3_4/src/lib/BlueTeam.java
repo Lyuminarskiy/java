@@ -20,6 +20,6 @@ public class BlueTeam extends Team {
         Team.ropeCurrent -= challenger.power;
         Team.ropeBlue -= challenger.power;
         System.out.println(String.format("%s<%s> добавляет -%s своей команде\nТекущий счет: %s<Красные>, %s<Синие>\n",
-                challenger.name, color, challenger.power, ropeCurrent, Team.ropeRed, Team.ropeBlue));
+                challenger.name, color, challenger.power, Team.ropeRed, Team.ropeBlue));
     }
 }

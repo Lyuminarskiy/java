@@ -11,17 +11,16 @@ public abstract class Team extends Thread{
     public static int ropeMax = 100;
     public static int ropeBlue = 0;
     public static int ropeRed = 0;
+    private static boolean flag = true;
 
     Team(String color, ArrayList<Challenger> challengersList){
         this.color = color;
         this.challengersList = challengersList;
     }
 
-//    private void hangTheRope(Challenger challenger) {
-//        Team.ropeCurrent += challenger.power;
-//        System.out.println(String.format("%s<%s> добавляет %s своей команде\nТекущий счет: %s<Красные>, %s<Синие>\n",
-//                challenger.name, color, challenger.power, Team.ropeRed, Team.ropeBlue));
-//    }
+    public static void setMaxRopeValue(int max){
+        ropeMax = max;
+    }
 
     @Override
     public String toString() {
@@ -35,11 +34,21 @@ public abstract class Team extends Thread{
 
     @Override
     public void run() {
+        if (Team.flag) {
+            Team.flag = false;
+            System.out.println("Игра начинается!\nКоманда победит при достижении порога в " + ropeMax + " единиц\n");
+        }
         while (Math.abs(ropeCurrent) < ropeMax) {
             for (Challenger ch:
             challengersList) {
                 hangTheRope(ch);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
         if (ropeCurrent > 0) {
             System.out.println("Победили Красные");

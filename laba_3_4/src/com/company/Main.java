@@ -9,6 +9,8 @@ public class Main {
         rt.printTeam();
         bt.printTeam();
 
+        Team.setMaxRopeValue(20);
+
         rt.start();
         bt.start();
     }
