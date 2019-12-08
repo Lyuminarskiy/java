@@ -11,6 +11,8 @@ public class Main {
 
         Team.setMaxRopeValue(20);
 
+        System.out.println("Игра начинается!\nКоманда победит при достижении порога в " + Team.ropeMax + " единиц\n");
+
         rt.start();
         bt.start();
     }

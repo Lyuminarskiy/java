@@ -25,7 +25,7 @@ public abstract class Team extends Thread{
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder(String.format("Команда <%s>\n", color));
+        StringBuilder str = new StringBuilder(String.format("Команда <%s>:\n", color));
         for (Challenger ch:
              challengersList) {
             str.append(String.format("%s<%s>\n", ch.name, color));
@@ -35,31 +35,32 @@ public abstract class Team extends Thread{
 
     @Override
     public void run() {
-        if (Team.flag) {
-            Team.flag = false;
-            System.out.println("Игра начинается!\nКоманда победит при достижении порога в " + ropeMax + " единиц\n");
-        } else {
-            while (Math.abs(ropeCurrent) < ropeMax) {
-                for (Challenger ch :
-                        challengersList) {
-                    hangTheRope(ch);
-                    if (ropeCurrent >= ropeMax) {
-                        break;
-                    }
+        while (Math.abs(ropeCurrent) < ropeMax) {
+            for (Challenger ch :
+                    challengersList) {
+                if (Math.abs(ropeCurrent) >= ropeMax) {
+                    break;
+                } else {
                     try {
                         Thread.sleep(new Random().nextInt(1000 + 100));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    hangTheRope(ch);
                 }
             }
-            if (ropeCurrent > 0) {
-                System.out.println("Победили Красные");
-            } else {
-                System.out.println("Победили Синие");
-            }
+        }
+        if (ropeCurrent > 0 && flag) {
+            System.out.println("Победили Красные");
+            flag = false;
+            getThreadGroup().stop();
+        } else if (ropeCurrent < 0 && flag){
+            System.out.println("Победили Синие");
+            flag = false;
+            getThreadGroup().stop();
         }
     }
+
 
     public void printTeam() {
         System.out.println(this.toString());
