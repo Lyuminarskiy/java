@@ -2,6 +2,7 @@ package lib;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Team extends Thread{
     String color;
@@ -37,23 +38,26 @@ public abstract class Team extends Thread{
         if (Team.flag) {
             Team.flag = false;
             System.out.println("Игра начинается!\nКоманда победит при достижении порога в " + ropeMax + " единиц\n");
-        }
-        while (Math.abs(ropeCurrent) < ropeMax) {
-            for (Challenger ch:
-            challengersList) {
-                hangTheRope(ch);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        } else {
+            while (Math.abs(ropeCurrent) < ropeMax) {
+                for (Challenger ch :
+                        challengersList) {
+                    hangTheRope(ch);
+                    if (ropeCurrent >= ropeMax) {
+                        break;
+                    }
+                    try {
+                        Thread.sleep(new Random().nextInt(1000 + 100));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-
-        }
-        if (ropeCurrent > 0) {
-            System.out.println("Победили Красные");
-        } else {
-            System.out.println("Победили Синие");
+            if (ropeCurrent > 0) {
+                System.out.println("Победили Красные");
+            } else {
+                System.out.println("Победили Синие");
+            }
         }
     }
 
