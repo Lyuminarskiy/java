@@ -22,7 +22,7 @@ public class BlueTeam extends Team {
         int power = random.nextInt(challenger.power + 1);
         Team.ropeCurrent -= power;
         Team.ropeBlue -= power;
-        System.out.println(String.format("%s<%s> добавляет -%s своей команде\nТекущий счет: %s<Красные>, %s<Синие>\n",
+        System.out.println(String.format("%s<%s> добавляет %s своей команде\nТекущий счет: %s<Красные>, %s<Синие>\n",
                 challenger.name, color, power, Team.ropeRed, Team.ropeBlue));
     }
 }

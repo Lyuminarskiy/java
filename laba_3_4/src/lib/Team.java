@@ -19,6 +19,7 @@ public abstract class Team extends Thread{
         this.challengersList = challengersList;
     }
 
+    protected abstract void hangTheRope(Challenger challenger);
     public static void setMaxRopeValue(int max){
         ropeMax = max;
     }
@@ -50,21 +51,19 @@ public abstract class Team extends Thread{
                 }
             }
         }
-        if (ropeCurrent > 0 && flag) {
-            System.out.println("Победили Красные");
+        if (flag) {
             flag = false;
-            getThreadGroup().stop();
-        } else if (ropeCurrent < 0 && flag){
-            System.out.println("Победили Синие");
-            flag = false;
+            if (ropeCurrent > 0) {
+                color = "<Красные>";
+            } else {
+                color = "<Синие>";
+            }
+            System.out.println("Игра завершена!\nПобедила команда " + color);
             getThreadGroup().stop();
         }
     }
 
-
     public void printTeam() {
         System.out.println(this.toString());
     }
-
-    protected abstract void hangTheRope(Challenger challenger);
 }
