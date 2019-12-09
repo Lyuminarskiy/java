@@ -1,9 +1,6 @@
 package com.company;
 import lib.Task3_1;
 
-import java.io.Console;
-import java.util.Random;
-
 class Main {
     public static void main(String[] args) {
         System.out.println(Task3_1.sort("a bbb cccc ddd e"));
