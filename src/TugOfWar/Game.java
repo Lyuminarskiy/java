@@ -24,19 +24,15 @@ public class Game {
         System.out.printf("\nКоманда <%s>:\n", "Красные");
         for (var teamMember : leftSideTeam){
             System.out.println(String.format("%s<%s>", teamMember.getName(), teamMember.Team));
+            teamMember.start();
         }
         System.out.printf("\nКоманда <%s>:\n", "Синие");
         for (var teamMember : rightSideTeam) {
             System.out.println(String.format("%s<%s>", teamMember.getName(), teamMember.Team));
+            teamMember.start();
         }
         System.out.printf("\nИгра начинается!\nКоманда победит при достижении порога в %s единиц\n", Game.goal);
 
-        for (var teamMember : leftSideTeam) {
-            teamMember.start();
-        }
-        for (var teamMember : rightSideTeam) {
-            teamMember.start();
-        }
     }
 
 
