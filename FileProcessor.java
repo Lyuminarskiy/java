@@ -1,18 +1,12 @@
 package com.company;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 class FileProcessor {
-    static File file;
-    static BufferedReader fileReader;
-    static String data;
 
-    static void show() throws IOException {
+    static void show(BufferedReader fileReader, String data) throws IOException {
         StringBuilder text = new StringBuilder();
         text.append("| YEAR |     TOTAL |    BIRTHS |    DEATHS |      RATE |\n| ---- | --------- | --------- | --------- | --------- |\n");
         String line = null;
@@ -20,9 +14,9 @@ class FileProcessor {
         try {
             while((line = fileReader.readLine()) != null){
                 if ((years.contains(line.split(",")[0]))||(data.equals("All"))){
-                    String[] data = line.split(",");
-                    int prirost = Integer.parseInt(data[2]) - Integer.parseInt(data[3]);
-                    text.append(String.format("| %s | %9s | %9s | %9s | %9s |\n", data[0], data[1], data[2], data[3], Integer.toString(prirost)));
+                    String[] dataOut = line.split(",");
+                    int prirost = Integer.parseInt(dataOut[2]) - Integer.parseInt(dataOut[3]);
+                    text.append(String.format("| %s | %9s | %9s | %9s | %9s |\n", dataOut[0], dataOut[1], dataOut[2], dataOut[3], Integer.toString(prirost)));
                 }
             }
         }
@@ -32,7 +26,7 @@ class FileProcessor {
         System.out.println(text.toString());
     }
 
-    static void update() throws IOException{
+    static void update(BufferedReader fileReader, String data, File file) throws IOException{
         try {
             StringBuilder text = new StringBuilder();
             String line = null;
@@ -64,7 +58,7 @@ class FileProcessor {
         }
     }
 
-    static void delete() throws IOException{
+    static void delete(BufferedReader fileReader, String data, File file) throws IOException{
         try {
             StringBuilder text = new StringBuilder();
             String line = null;
