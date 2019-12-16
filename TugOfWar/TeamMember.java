@@ -2,7 +2,7 @@ package TugOfWar;
 
 public class TeamMember extends Thread {
 
-    public String Team;
+    String Team;
 
     public TeamMember(String name, String team){
         super(name);
@@ -18,7 +18,6 @@ public class TeamMember extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

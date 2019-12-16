@@ -1,7 +1,6 @@
 import TugOfWar.*;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
@@ -10,37 +9,17 @@ public class Main {
         Game.leftSideTeam = "Красные";
         Game.rightSideTeam = "Синие";
 
-        var participants = new ArrayList<TeamMember>();
-        participants.add(new TeamMember("Иван", Game.leftSideTeam));
-        participants.add(new TeamMember("Марина", Game.leftSideTeam));
-        participants.add(new TeamMember("Анна", Game.leftSideTeam));
-        participants.add(new TeamMember("Михаил", Game.rightSideTeam));
-        participants.add(new TeamMember("Сергей", Game.rightSideTeam));
-        participants.add(new TeamMember("Ольга", Game.rightSideTeam));
+        var leftSideTeam = new ArrayList<TeamMember>();
+        leftSideTeam.add(new TeamMember("Иван", Game.leftSideTeam));
+        leftSideTeam.add(new TeamMember("Марина", Game.leftSideTeam));
+        leftSideTeam.add(new TeamMember("Анна", Game.leftSideTeam));
 
-        System.out.print("Введите порог для победы: ");
-        var sc = new Scanner(System.in);
-        Game.goal = sc.nextInt();
+        var rightSideTeam = new ArrayList<TeamMember>();
+        rightSideTeam.add(new TeamMember("Михаил", Game.rightSideTeam));
+        rightSideTeam.add(new TeamMember("Сергей", Game.rightSideTeam));
+        rightSideTeam.add(new TeamMember("Ольга", Game.rightSideTeam));
 
-        var leftTeamPresent = new ArrayList<String>();
-        var rightTeamPresent = new ArrayList<String>();
-        for (var teamMember : participants) {
-            var text = String.format("%s<%s>", teamMember.getName(), teamMember.Team);
-            if (teamMember.Team.equals(Game.leftSideTeam))
-                leftTeamPresent.add(text);
-            if (teamMember.Team.equals(Game.rightSideTeam))
-                rightTeamPresent.add(text);
-        }
+        Game.start(leftSideTeam, rightSideTeam);
 
-
-        System.out.printf("\nКоманда <%s>:\n", Game.leftSideTeam);
-        System.out.print(String.join("\n", leftTeamPresent));
-        System.out.printf("\n\n\nКоманда <%s>:\n", Game.rightSideTeam);
-        System.out.print(String.join("\n", rightTeamPresent) + "\n\n");
-        System.out.printf("Игра начинается!\nКоманда победит при достижении порога в %s единиц\n\n\n", Game.goal);
-
-        for (var teamMember : participants) {
-            teamMember.start();
-        }
     }
 }
