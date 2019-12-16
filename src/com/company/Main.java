@@ -6,8 +6,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         File file = new File(args[0]);
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
-        BufferedReader fileReader = new BufferedReader(new FileReader(file));
         String data;
         try{
             data = args[2];
@@ -15,12 +13,13 @@ public class Main {
         catch (ArrayIndexOutOfBoundsException ex){
             data="All";
         }
+        //Передавать что-то одно.
         switch (args[1].toLowerCase()) {
-            case "update": FileProcessor.update(fileReader, data, file);
+            case "update": FileProcessor.update(data, file);
                 break;
-            case "delete": FileProcessor.delete(fileReader, data, file);
+            case "delete": FileProcessor.delete(data, file);
                 break;
-            case "show": FileProcessor.show(fileReader, data);
+            case "show": FileProcessor.show(data, file);
                 break;
         }
     }

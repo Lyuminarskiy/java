@@ -6,7 +6,8 @@ import java.util.List;
 
 class FileProcessor {
 
-    static void show(BufferedReader fileReader, String data) throws IOException {
+    static void show(String data, File file) throws IOException {
+        BufferedReader fileReader = new BufferedReader(new FileReader(file));
         StringBuilder text = new StringBuilder();
         text.append("| YEAR |     TOTAL |    BIRTHS |    DEATHS |      RATE |\n| ---- | --------- | --------- | --------- | --------- |\n");
         String line = null;
@@ -26,8 +27,9 @@ class FileProcessor {
         System.out.println(text.toString());
     }
 
-    static void update(BufferedReader fileReader, String data, File file) throws IOException{
+    static void update(String data, File file) throws IOException{
         try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
             StringBuilder text = new StringBuilder();
             String line = null;
             String year = data.split(",")[0];
@@ -58,8 +60,9 @@ class FileProcessor {
         }
     }
 
-    static void delete(BufferedReader fileReader, String data, File file) throws IOException{
+    static void delete(String data, File file) throws IOException{
         try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
             StringBuilder text = new StringBuilder();
             String line = null;
             List<String> years = Arrays.asList(data.split(","));
