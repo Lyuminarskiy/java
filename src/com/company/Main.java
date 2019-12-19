@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static lib.Command.*;
@@ -9,7 +10,7 @@ import static lib.Reader.readFile;
 public class Main {
     public static String arg;
     public static File file;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try{
             arg = args[2];
         }catch (Throwable e){
@@ -17,11 +18,9 @@ public class Main {
         }
         try{
             file = new File(args[0]);
+            file.createNewFile();
             String command = args[1];
             readFile();
-            if (!file.exists()) {
-                file.createNewFile();
-            }
             switch (command.toLowerCase()){
                 case("show"):
                     show(arg);
