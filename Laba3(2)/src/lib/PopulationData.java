@@ -14,9 +14,8 @@ abstract class PopulationData {
 
             fw.write("");
 
-            for (Population ppl:
-                 populations) {
-                fw.append (ppl.toString()+"\n");
+            for (Population ppl : populations) {
+                fw.append(ppl.toString()).append("\n");
             }
 
             fw.close();
@@ -42,7 +41,6 @@ abstract class PopulationData {
                     Integer.parseInt(arguments[2]),
                     Integer.parseInt(arguments[3]));
                 pd.add(ppl);
-                // read next line
                 line = reader.readLine();
             }
             reader.close();
