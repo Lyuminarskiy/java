@@ -1,6 +1,6 @@
 package lib;
 
-public class Challenger {
+public class Challenger extends Thread {
     public String name;
     public int power;
 
