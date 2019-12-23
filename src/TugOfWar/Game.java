@@ -21,12 +21,12 @@ public class Game {
         var sc = new Scanner(System.in);
         Game.goal = sc.nextInt();
 
-        System.out.printf("\nКоманда <%s>:\n", "Красные");
+        System.out.println("\nКоманда <Красные>:");
         for (var teamMember : leftSideTeam){
             System.out.println(String.format("%s<%s>", teamMember.getName(), teamMember.Team));
             teamMember.start();
         }
-        System.out.printf("\nКоманда <%s>:\n", "Синие");
+        System.out.println("\nКоманда <Синие>:");
         for (var teamMember : rightSideTeam) {
             System.out.println(String.format("%s<%s>", teamMember.getName(), teamMember.Team));
             teamMember.start();
