@@ -1,9 +1,10 @@
 package lib;
-
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 public class liber {
 
-    public static void sort(String kek) {
-        String[] wordList = kek.split(" ");
+    public static String sort(String text) {
+        String[] wordList = text.split(" ");
         boolean isSorted = false;
         String buf = null;
         while (!isSorted) {
@@ -17,23 +18,12 @@ public class liber {
                 }
             }
         }
-        for(int i = 0; i < wordList.length;i++)
-        {
-            System.out.printf("%s ", wordList[i]);
-        }
+        return String.join(" ",wordList);
     }
 
-    public static boolean isPhone(String kek){
-        int len = 0;
-        boolean result = false;
-        if(kek.charAt(0) == '+' && kek.charAt(2) == '(' && kek.charAt(6) == ')' && kek.charAt(10) == '-' && kek.charAt(13) == '-')
-        {
-            for(int i = 0; i<kek.length(); i++){
-                len++;
-            }
-            if (len == 16) result = true;
-        }
-        else result = false;
-        return result;
+    public static boolean isPhone(String text){
+        Pattern pattern = Pattern.compile("\\+\\d\\(\\d{3}\\)\\d{3}\\-\\d{2}\\-\\d{2}");
+        Matcher matcher = pattern.matcher(text);
+        return matcher.matches();
     }
 }
