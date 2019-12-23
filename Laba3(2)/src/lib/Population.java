@@ -13,17 +13,6 @@ public class Population implements Comparable< Population > {// contain obj
         this.setDeathCount(deathCount);
     }
 
-    public Population(int ...data) {
-        if (data.length != 4) {
-            throw new Error("недостаточно данных");
-        } else {
-            this.setYear(data[0]);
-            this.setPopulationCount(data[1]);
-            this.setNewbornCount(data[2]);
-            this.setDeathCount(data[3]);
-        }
-    }
-
     @Override
     public String toString(){
         return String.format("%s,%s,%s,%s", this.getYear(), this.getPopulationCount(),

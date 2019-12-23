@@ -3,10 +3,11 @@ import java.util.*;
 
 public class CommandProcessor {
 
+    public static String PROGRAM_NAME = "";
     private String path;
     private List<Population> table;
 
-    CommandProcessor(String path){
+    public CommandProcessor(String path){
         this.path = path;
         this.table = PopulationData.getData(path);
     }
@@ -21,7 +22,12 @@ public class CommandProcessor {
     }
 
     public void Update(String data) {
-        Update(new Population(convertToIntArray(data)));
+        int[] array = convertToIntArray(data);
+        if (array.length != 4) {
+            throw new Error("недостаточно данных");
+        } else {
+            Update(new Population(array[0], array[1], array[2], array[3]));
+        }
     }
 
     public void Update(Population ppl) {
@@ -33,7 +39,7 @@ public class CommandProcessor {
             table.set(table.indexOf(ppl), ppl);
         }
         if (PopulationData.writeData(table, path)) {
-            System.out.format("<%s> <%s> UPDATE %s, %s, %s, %s\n--\n%s added in <%s>\n",InputProcessor.PROGRAM_NAME, path,
+            System.out.format("<%s> <%s> UPDATE %s, %s, %s, %s\n--\n%s added in <%s>\n",PROGRAM_NAME, path,
                     ppl.getYear(), ppl.getPopulationCount(), ppl.getNewbornCount(), ppl.getDeathCount(),
                     ppl.getYear(), path);
         }
@@ -44,7 +50,7 @@ public class CommandProcessor {
     }
 
     public void Delete(int ...years) {
-        String msg = String.format("<%s> <%s> DELETE%s\n--\n",InputProcessor.PROGRAM_NAME,path, Arrays.toString(years));
+        String msg = String.format("<%s> <%s> DELETE%s\n--\n",PROGRAM_NAME,path, Arrays.toString(years));
         msg = msg.replace('[',' ');
         msg = msg.replace(']',' ');
         System.out.print(msg);
@@ -70,7 +76,7 @@ public class CommandProcessor {
     }
 
     public void Show(int ...years) {
-        String msg = String.format("<%s> <%s> DELETE%s\n--\n",InputProcessor.PROGRAM_NAME,path, Arrays.toString(years));
+        String msg = String.format("<%s> <%s> DELETE%s\n--\n",PROGRAM_NAME,path, Arrays.toString(years));
         msg = msg.replace('[',' ');
         msg = msg.replace(']',' ');
         System.out.print(msg);
