@@ -13,12 +13,12 @@ public class Member extends Thread {
     @Override
     public void run() {
         var random = new Random();
-        while(Math.abs(Main.score)<Main.endPoints) {
+        while(Math.abs(Game.score)<Game.endPoints) {
             if (this.Color == "Синие") {
-                Main.changeScore(-random.nextInt(100), this);
+                Game.changeScore(-random.nextInt(100), this);
             }
             if (this.Color == "Красные") {
-                Main.changeScore(random.nextInt(100), this);
+                Game.changeScore(random.nextInt(100), this);
             }
             try {
                 Thread.sleep(random.nextInt(100));
