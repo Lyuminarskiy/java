@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Game.start();
-        ArrayList<Member> redTeam=new ArrayList<Member>(), blueTeam=new ArrayList<Member>();
+        Game.takeEndPoints();
+        ArrayList<Member> redTeam=new ArrayList<Member>();
+        ArrayList<Member> blueTeam=new ArrayList<Member>();
         redTeam.add(new Member("Иван","Красные"));
         redTeam.add(new Member("Марина","Красные"));
         redTeam.add(new Member("Анна","Красные"));
@@ -22,11 +23,7 @@ public class Main {
             System.out.printf("%s<%s>\n",member.getName(),member.Color);
         }
         System.out.printf("\nИгра начинается!\nКоманда победит при достижении порога в %s единиц\n", Game.endPoints);
-        for (var member:redTeam) {
-            member.start();
-        }
-        for (var member:blueTeam) {
-            member.start();
-        }
+        Game.startMembers(redTeam);
+        Game.startMembers(blueTeam);
     }
 }
