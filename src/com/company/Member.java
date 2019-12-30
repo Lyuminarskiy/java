@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Member extends Thread {
 
-    String Color;
+    protected String Color;
     public Member(String name, String color){
         super(name);
         Color=color;
