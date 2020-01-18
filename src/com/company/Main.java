@@ -1,14 +1,26 @@
 package com.company;
+import java.io.*;
 
-import lib.lib;
 
 public class Main {
 
-
-    public static void main(String[] args) {
-        System.out.println(lib.sort("a bbb cccc ddd e"));
-        System.out.println(lib.sort("1 4444 55555 22 333"));
-        System.out.println(lib.isPhone("+7(123)456-78-90"));
-        System.out.println(lib.isPhone("81234567890"));
+    public static void main(String[] args) throws IOException {
+        File file = new File(args[0]);
+        String data;
+        try{
+            data = args[2];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            data="All";
+        }
+        //Передавать что-то одно.
+        switch (args[1].toLowerCase()) {
+            case "update": FileProcessor.update(data, file);
+                break;
+            case "delete": FileProcessor.delete(data, file);
+                break;
+            case "show": FileProcessor.show(data, file);
+                break;
+        }
     }
 }
