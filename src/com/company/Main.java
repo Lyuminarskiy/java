@@ -8,31 +8,31 @@ import static lib.Command.*;
 import static lib.Reader.readFile;
 
 public class Main {
-    public static String arg;
-    public static File file;
     public static void main(String[] args) {
+        File file;
+        String commandArgs;
         try{
-            arg = args[2];
+            commandArgs = args[2];
         }catch (Throwable e){
-            arg = "";
+            commandArgs = "";
         }
         try{
             file = new File(args[0]);
             file.createNewFile();
             String command = args[1];
-            readFile();
+            readFile(file);
             switch (command.toLowerCase()){
-                case("show"):
-                    show(arg);
+                case "show":
+                    show(commandArgs);
                     break;
-                case ("update"):
-                    update(arg);
+                case "update":
+                    update(file, commandArgs);
                     break;
-                case ("delete"):
-                    delete(arg);
+                case "delete":
+                    delete(file, commandArgs);
                     break;
             }
-            readFile();
+            readFile(file);
         } catch(Throwable e){
             System.out.print(e);
             System.out.print("\nIncorrect input");
