@@ -3,22 +3,23 @@ package lib;
 import java.util.ArrayList;
 
 public class Game{
-    public static int currentscore;
-    public static int goal;
-    public static ThreadGroup red=new ThreadGroup("Красные");
-    public static ThreadGroup blue=new ThreadGroup("Синие");
+    private static int currentscore;
+    private static int goal;
     public Game(int goal){
         this.goal = goal;
         this.currentscore = 0;
     }
-    public static void start() {
-        ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player(red, "Слава"));
-        players.add(new Player(blue, "Максим"));
-        players.add(new Player(red, "Егор"));
-        players.add(new Player(blue, "Данил"));
-        players.add(new Player(red, "Даша"));
-        players.add(new Player(blue, "Маша"));
+
+    public static int getCurrentscore() {
+        return currentscore;
+    }
+    public static void setCurrentscore(int currentscore) {
+        Game.currentscore = currentscore;
+    }
+    public static int getGoal() {
+        return goal;
+    }
+    public static void start(ArrayList<Player> players, ThreadGroup red, ThreadGroup blue) {
         StringBuilder redTeam = new StringBuilder("Команда 'Красные':");
         StringBuilder blueTeam = new StringBuilder("Команда 'Синие':");
         for (Player player : players) {
@@ -27,6 +28,7 @@ public class Game{
             else blueTeam.append(temp);
         }
         System.out.printf("%s\n\n%s", redTeam, blueTeam);
+
         for (Player player : players) {
             player.start();
         }
