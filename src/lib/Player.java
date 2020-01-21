@@ -12,31 +12,15 @@ public class Player extends Thread {
     @Override
     public void run() {
         Random random = new Random();
-        while(!Main.isEndGame && Math.abs(Main.score)<Main.endPoints) {
+        while(!Game.isEndGame && Math.abs(Game.score)< Game.endPoints) {
             if (this.Color == "Синие")
-                changeScore(-random.nextInt(100));
+                Game.changeScore(-random.nextInt(100),this);
             if (this.Color == "Красные")
-                changeScore(random.nextInt(100));
+                Game.changeScore(random.nextInt(100),this);
             try {
                 Thread.sleep(random.nextInt(100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-        }
-    }
-    private synchronized void changeScore(int points)
-    {
-        if(!Main.isEndGame && Math.abs(Main.score) < Main.endPoints)
-        {
-            Main.score += points;
-            System.out.printf("\n%s<%s> добавляет %d к своей команде\nТекущий счет: %d<Красные>,  %d<Синие>\n",
-                    this.getName(), this.Color, Math.abs(points), Main.score, -Main.score);
-            if (Math.abs(Main.score) >= Main.endPoints) {
-                Main.isEndGame = true;
-                if (Main.score < 0)
-                    System.out.printf("\nИгра завершена!\nПобедила команда <Синие>!");
-                if (Main.score > 0)
-                    System.out.printf("\nИгра завершена!\nПобедила команда <Красные>!");
             }
         }
     }
