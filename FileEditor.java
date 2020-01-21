@@ -91,12 +91,9 @@ public class FileEditor {
     }
     private static StringBuilder sort (StringBuilder text){
         List<String> lines = Arrays.asList(text.toString().split("\n"));
-        lines.sort((new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.split(",")[0].compareTo(o2.split(",")[0]);
-            }
-        }));
+        lines.sort(
+                Comparator.comparing(line -> line.split(",")[0])
+        );
         text = new StringBuilder();
         for (String line:lines) {
             text.append(line);
