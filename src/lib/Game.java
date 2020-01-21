@@ -6,40 +6,26 @@ import java.util.Scanner;
 public class Game {
     static Integer score,endPoints;
     static boolean isEndGame = false;
-    ArrayList<Player> redTeam;
-    ArrayList<Player> blueTeam;
+    private ArrayList<Team> teams;
 
     public Game(){
         score=0;
         System.out.print("Введите количество очков необходимых для победы: ");
         Scanner scanner = new Scanner(System.in);
         endPoints = scanner.nextInt();
-        redTeam = new ArrayList<Player>();
-        blueTeam = new ArrayList<Player>();
+        teams = new ArrayList<Team>();
     }
-    public void CreateTeam(){
-        redTeam.add(new Player("Иван","Красные"));
-        redTeam.add(new Player("Марина","Красные"));
-        redTeam.add(new Player("Анна","Красные"));
-
-        blueTeam.add(new Player("Михаил","Синие"));
-        blueTeam.add(new Player("Сергей","Синие"));
-        blueTeam.add(new Player("Ольга","Синие"));
+    public void AddTeam(String color, String ... players){
+        teams.add(new Team (color,players));
     }
-    public void PrintMembersTeam(){
-        System.out.printf("\nКоманда <Красные>:\n");
-        for (Player member:redTeam)
-            System.out.printf("%s<%s>\n",member.getName(),member.Color);
-        System.out.printf("\nКоманда <Синие>:\n");
-        for (Player member:blueTeam)
-            System.out.printf("%s<%s>\n",member.getName(),member.Color);
+    public void PrintTeams(){
+        for (Team team : teams)
+            team.PrintMembers();
     }
     public void StartGame(){
         System.out.printf("\nИгра начинается!\nКоманда победит при достижении порога в %s единиц\n", endPoints);
-        for (Player member:redTeam)
-            member.start();
-        for (Player member:blueTeam)
-            member.start();
+        for (Team team : teams)
+            team.Start();
     }
     public static synchronized void changeScore(int points, Player player) {
         if (!isEndGame && Math.abs(score) < endPoints) {
