@@ -1,21 +1,23 @@
 package lib;
 
-public class libr {
-    public static void sort(String[] arr) {
-        for (int i = arr.length-1; i >0 ; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j].length() < arr[j + 1].length()) {
-                    String temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+import java.util.regex.Pattern;
+
+public class lib {
+
+    public static String sort(String str){
+        String[] newstr=str.split(" ");
+        for (int i=0; i<newstr.length; i++)
+            for (int j=0; j<newstr.length-1; j++)
+                if (newstr[j].length()<newstr[j+1].length()){
+                    String a=newstr[j];
+                    newstr[j]=newstr[j+1];
+                    newstr[j+1]=a;
                 }
-            }
-        }
+        return String.join(" ", newstr);
     }
-    public static boolean isPhone(String[] arr,String[] arr1){
-        if(arr[0].equals(arr1[0]) && arr[1].equals(arr1[1]) && arr[2].equals(arr1[2]) && arr[6].equals(arr1[3]) && arr[10].equals(arr1[4]) && arr[13].equals(arr1[4]))
-            return true;
-        else
-            return false;
+
+    public static boolean isPhone(String str){
+        return Pattern.matches("\\+\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}", str);
     }
+
 }
